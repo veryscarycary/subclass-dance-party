@@ -28,7 +28,13 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    if('nodes' in dancer){
+      dancer.nodes.forEach(function(node){
+        $('body').append(node);
+      })
+    } else {
     $('body').append(dancer.$node);
+  }
   });
 });
 

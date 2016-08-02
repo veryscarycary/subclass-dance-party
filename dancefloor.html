@@ -8,15 +8,60 @@
     <script src="src/dancer.js"></script>
     <script src="src/blinkyDancer.js"></script>
     <script src="src/TrumpClass.js"></script>
+    <script src="src/3DCube.js"></script>
   </head>
   <body>
     <div class="topbar">
       <span class="title">object dance party</span>
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeBlinkyDancer">add a blinky dancer</a>    
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="Trump">Trump 2016</a>    
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="Trump">Trump 2016</a>
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="ThreeD">3D-Cube</a>
+      <a href="#" class="startgame" >Game</a>        
 
       </div>
 
     <script src="src/init.js"></script>
+     <script>
+     var Project;
+
+   
+      Project = {};
+      Project.top = 100;
+      Project.left = 100;
+
+      $(document).keypress(function(event){
+
+        if(event.which === 32){
+          firelaser()
+        }
+        if(event.which === 122){
+          Project.top += 5;
+          $('.laser').css({top: Project.top+5});
+        }
+
+        if (event.which === 97){
+          Project.top -= 5;
+          $('.laser').css({top: Project.top-5});
+        }
+       // Project.left += 5;
+      //  Project.top += 5;
+       // $('.laser').css({top: Project.top+5,left:Project.left+5});
+      })
+      
+
+    //appends laser
+    var laser = $('<img src="images/laser.png" class="dancer laser">')
+    laser.css({top:100,left:100,width:'50px',height:'100px'});
+    console.log(laser);
+    $('body').append(laser);
+
+    $('.startgame').on('click',function(event){
+      console.log("hey");
+      $('body').append(laser);
+    })
+
+
+
+    </script>
   </body>
 </html>

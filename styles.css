@@ -28,6 +28,12 @@ body, a:link, a:visited, a:active{
   animation-name: bounceIn;
 }
 
+.threednode{
+  position:absolute;
+  animation-duration: 2s;
+  animation-name: bounceIn;
+}
+
 .trump{
   width:40px;
   height:40px;
