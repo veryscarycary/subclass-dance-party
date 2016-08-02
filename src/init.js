@@ -23,6 +23,7 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
     //  console.log("function is" + dancerMakerFunction);
     // make a dancer with a random position
+    debugger;
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),

@@ -4,6 +4,9 @@ var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   // so we must keep a copy of the old version of this function
   makeDancer.call(this, top, left, timeBetweenSteps);
   this.timeBetweenSteps = timeBetweenSteps;
+  this.setPosition(this.top, this.left);
+  this.$bodynode = $('<img class="dancer" src="images/horse.gif">');
+
   //var oldStep = blinkyDancer.step;
 };
 makeBlinkyDancer.prototype = Object.create(makeDancer.prototype);
@@ -20,8 +23,8 @@ makeBlinkyDancer.prototype.step = function() {
   // this.top = this.top + 20;
   console.log('top is' + this.top);
   // this.left = this.left + 20;
-  this.setPosition(this.top, this.left);
+  //this.setPosition(this.top, this.left);
   //this.$node.toggle();
-  $('.dancer').animate({transform: 'rotate(45deg)', '-webkit-transform': 'rotate(45deg)'}, 3000);
+  $('.dancer').animate({left: "+=50", '-webkit-transform': 'rotate(45deg)'}, 3000);
   
 };  

@@ -3,7 +3,9 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background: url("images/background.png");
+  background-width: 100%;
+  background-height: 100%;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -21,19 +23,14 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  width:90px;
+  height:90px;
   position:absolute;
   animation-duration: 2s;
   animation-name: bounceIn;
 }
 
-.trump{
-  width:40px;
-  height:40px;
-}
-
-@keyframes bounceIn {
+/*@keyframes bounceIn {
   0% {
     transform: scale(0.1);
     opacity: 0;
@@ -45,4 +42,4 @@ body, a:link, a:visited, a:active{
   100% {
     transform: scale(1);
   }
-}
+}*/
