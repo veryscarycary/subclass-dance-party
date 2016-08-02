@@ -52,3 +52,7 @@ body, a:link, a:visited, a:active{
     transform: scale(1);
   }
 }
+
+.laser{
+  border:0px solid red;
+}

@@ -23,6 +23,7 @@
     <script src="src/init.js"></script>
      <script>
      var Project;
+     window.laserpellets = [];
 
    
       Project = {};
@@ -48,12 +49,36 @@
        // $('.laser').css({top: Project.top+5,left:Project.left+5});
       })
 
+      window.laserpellet = function(){
+        var pellet = {};
+        pellet.$node = $('<span class="dancer laserpellet"><span>');
+        pellet.top =  $('.laser').css('top');
+        pellet.left = $('.laser').css('left');
+        return pellet;
+      }
       function firelaser(top,left){
-        var laserpellet = $('<span class="dancer laserpellet"><span>');
-        laserpellet.css({top:top+30,left:left+30});
+        var laserpellet = window.laserpellet();
+        //var top = $('.laser').css('top');
+       // var left = $('.laser').css('left');
+        laserpellet.$node.css({top:top+30,left:left+30});
+        laserpellets.push(laserpellet.$node);
         var width = $('body').width();
-        $('body').append(laserpellet);
-        $('.laserpellet').animate({left:"+=" + 1200},3000)
+        $('body').append(laserpellet.$node);
+
+        setInterval(function(){
+
+          laserpellets.forEach(function(pellet){
+            var oldLeft = pellet.css('left').replace('px',"");
+            oldLeft = Number(oldLeft) + 5;
+            //console.log("left is" + oldLeft);
+            oldLeft +=5;
+            pellet.css({left:oldLeft})
+            //pellet.remove();
+            //$('body').append(pellet);
+          })
+        },100)
+       // setInterval(function)
+        //$('.laserpellet').animate({left:"+=" + 1200},3000)
   
       }
       
@@ -61,13 +86,9 @@
     //appends laser
     var laser = $('<img src="images/laser.png" class="dancer laser">')
     laser.css({top:100,left:100,width:'50px',height:'100px'});
-    console.log(laser);
+    //console.log(laser);
     $('body').append(laser);
 
-    $('.startgame').on('click',function(event){
-      console.log("hey");
-      $('body').append(laser);
-    })
 
     function getdancerspositions(){
       var positions = [];
@@ -78,6 +99,23 @@
       return positions;
     }
 
+    function collisiondetector(){
+     dancers.forEach(function(dancer){
+        var left= Number(dancer.$node.css('left').replace("px",""));
+        var top = Number(dancer.$node.css('top').replace("px",""));
+        laserpellets.forEach(function(pellet){
+          var pelletleft = Number(pellet.css('left').replace("px",""));
+          var pellettop = Number(pellet.css('top').replace("px",""));
+          console.log("collision is" + Math.abs(left-pelletleft)<40 && Math.abs(top-pellettop<40)); 
+          if(Math.abs(left-pelletleft)<40 && Math.abs(top-pellettop<40)){
+            dancer.$node.remove()
+          }
+        })
+
+      })
+    }
+
+    setInterval(collisiondetector,1000);
 
 
 
