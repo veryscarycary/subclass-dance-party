@@ -17,5 +17,9 @@ makeBlinkyDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   //console.log(this);
-  this.$node.toggle();
+  this.top = this.top + 20;
+  console.log=("top is" + this.top);
+  this.left = this.left + 20;
+  this.setPosition(this.top,this.left);
+  //this.$node.toggle();
 };  

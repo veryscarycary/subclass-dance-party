@@ -14,14 +14,15 @@ $(document).ready(function() {
      * one of the dancer maker functions available in global scope.
      * A new object of the given type will be created and added
      * to the stage.
-     */debugger;
+     */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+
+    //console.log("function name is" + dancerMakerFunctionName);
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
+    //  console.log("function is" + dancerMakerFunction);
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
