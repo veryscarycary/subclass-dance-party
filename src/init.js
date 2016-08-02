@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  window.dancers = [];
+  window.dancers = []; // will be useful for lining up dancers
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
