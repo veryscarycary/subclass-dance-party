@@ -1,7 +1,7 @@
 describe('blinkyDancer', function() {
 
   var blinkyDancer, clock;
-  var timeBetweenSteps = 100;
+  var timeBetweenSteps = 1000;
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
@@ -14,16 +14,21 @@ describe('blinkyDancer', function() {
 
   it('should have a step function that makes its node blink', function() {
     sinon.spy(blinkyDancer.$node, 'toggle');
+    //debugger;
     blinkyDancer.step();
     expect(blinkyDancer.$node.toggle.called).to.be.true;
   });
 
   describe('dance', function() {
     it('should call step at least once per second', function() {
+      //debugger;
       sinon.spy(blinkyDancer, 'step');
       expect(blinkyDancer.step.callCount).to.be.equal(0);
-      blinkyDancer = new makeBlinkyDancer(10, 20, timeBetweenSteps);
+      //blinkyDancer = new makeBlinkyDancer(10, 20, timeBetweenSteps);
+      //console.log(blinkyDancer);
       clock.tick(timeBetweenSteps);
+      //clock.tick(timeBetweenSteps);
+
 
       expect(blinkyDancer.step.callCount).to.be.equal(1);
 
