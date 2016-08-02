@@ -3,11 +3,23 @@ body, html{
 }
 body{
   margin: 0px;
-  background: url("images/background.png");
-  background-width: 100%;
-  background-height: 100%;
-  font-size: 18px;
+  background: url("images/background.png") no-repeat center center fixed;
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+  background-size: 100% 100%;
+  
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
+
+
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
@@ -28,8 +40,17 @@ body, a:link, a:visited, a:active{
   position:absolute;
   animation-duration: 2s;
   animation-name: bounceIn;
+  z-index: 3;
 }
 
+.horseNode {
+  width:180px;
+  height:180px;
+  position:absolute;
+  animation-duration: 2s;
+  animation-name: bounceIn;
+  z-index: 1;
+}
 /*@keyframes bounceIn {
   0% {
     transform: scale(0.1);

@@ -23,13 +23,24 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
     //  console.log("function is" + dancerMakerFunction);
     // make a dancer with a random position
-    debugger;
+    var cushion = window.dancers.length;
+    cushion = cushion * .02;
+
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $("body").height() * (.65 + cushion),
+      $("body").width() * (.05 - cushion),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
+    var horseNode = dancer.$horseNode.addClass('horseNode');
+    $('body').append(horseNode);
+  });
+
+  $('.lineUpButton').on('click', function() {
+    window.dancers.forEach(function (dancer) {
+      
+    });
   });
 });
 

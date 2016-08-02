@@ -4,6 +4,8 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
   this.top = top;
   this.left = left;
+  this.speed = (40 + (50 * Math.random())).toString();
+  this.setPosition(this.top, this.left);
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
 
@@ -16,10 +18,18 @@ var makeDancer = function(top, left, timeBetweenSteps) {
 makeDancer.prototype.setPosition = function(top, left) {
     // Use css top and left properties to position our <span> tag
     // where it belongs on the page. See http://api.jquery.com/css/
-    //
-  var styleSettings = {
-    top: top,
-    left: left
+  debugger;
+  var styleSettingsHead = {
+    top: top + 15,
+    left: left + 125,
   };
-  this.$node.css(styleSettings);
+
+  var styleSettingsHorse = {
+    top: top,
+    left: left,
+  };
+  this.$node.css(styleSettingsHead);
+  if (this.$horseNode) {
+    this.$horseNode.css(styleSettingsHorse);
+  }
 };
