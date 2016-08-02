@@ -32,7 +32,7 @@
       $(document).keypress(function(event){
 
         if(event.which === 32){
-          firelaser()
+          firelaser(Project.top,Project.left);
         }
         if(event.which === 122){
           Project.top += 5;
@@ -47,6 +47,15 @@
       //  Project.top += 5;
        // $('.laser').css({top: Project.top+5,left:Project.left+5});
       })
+
+      function firelaser(top,left){
+        var laserpellet = $('<span class="dancer laserpellet"><span>');
+        laserpellet.css({top:top+30,left:left+30});
+        var width = $('body').width();
+        $('body').append(laserpellet);
+        $('.laserpellet').animate({left:"+=" + 1200},3000)
+  
+      }
       
 
     //appends laser
