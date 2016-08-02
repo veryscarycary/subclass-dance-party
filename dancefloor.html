@@ -69,6 +69,17 @@
       $('body').append(laser);
     })
 
+    function getdancerspositions(){
+      var positions = [];
+      dancers.forEach(function(dancer){
+        positions.push([dancer.$node.css('top'),dancer.$node.css('left')]);
+      });
+      console.log(positions);
+      return positions;
+    }
+
+
+
 
 
     </script>

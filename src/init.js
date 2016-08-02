@@ -28,6 +28,9 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+
+    dancers.push(dancer);
+    console.log(dancers);
     if('nodes' in dancer){
       dancer.nodes.forEach(function(node){
         $('body').append(node);
