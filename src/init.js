@@ -23,14 +23,15 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
     //  console.log("function is" + dancerMakerFunction);
     // make a dancer with a random position
-    var cushion = window.dancers.length;
-    cushion = cushion * .02;
+    window.cushion = window.dancers.length;
+    window.cushion = window.cushion * .02;
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * (.65 + cushion),
-      $("body").width() * (.05 - cushion),
+      $("body").height() * (.65 + window.cushion),
+      $("body").width() * (.05 - window.cushion),
       Math.random() * 1000
     );
+
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
     var horseNode = dancer.$horseNode.addClass('horseNode');
@@ -38,8 +39,15 @@ $(document).ready(function() {
   });
 
   $('.lineUpButton').on('click', function() {
+    window.motion = false;
+    $('.dancer').stop(true, true, true);
     window.dancers.forEach(function (dancer) {
+
+      var left = $("body").height() * (.65 + window.cushion);
       
+      dancer.$node.css({left: left + 125});
+      dancer.$horseNode.css({left: left});
+      console.log('horse is ' + dancer.$horseNode);
     });
   });
 });

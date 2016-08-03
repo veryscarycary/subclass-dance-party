@@ -21,10 +21,122 @@
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="Hillary">Hillary 2016</a>    
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="Bernie">Bernie 2016</a>    
       <a href="#" class="addDancerButton" data-dancer-maker-function-name="Obama">Obama</a>    
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="Ted">Ted</a>    
+      <a href="#" class="addDancerButton" data-dancer-maker-function-name="Ted">Ted</a> 
+
+      <a href="#" class="lineUpButton">Line Up</a>    
+
+      <a href="#" class="startgame" >Game</a>        
 
       </div>
 
     <script src="src/init.js"></script>
+     <script>
+
+     window.motion = true;
+     var Project;
+     window.laserpellets = [];
+
+   
+     Project = {};
+     Project.top = 100;
+     Project.left = 100;
+
+     $(document).keypress(function(event){
+
+       if(event.which === 32){
+
+         firelaser(Project.top,Project.left);
+       }
+       if(event.which === 122){
+        
+         Project.top += 5;
+         $('.laser').css({top: Project.top+5});
+       }
+
+       if (event.which === 97){
+         Project.top -= 5;
+         $('.laser').css({top: Project.top-5});
+       }
+         // Project.left += 5;
+        //  Project.top += 5;
+         // $('.laser').css({top: Project.top+5,left:Project.left+5});
+     });
+
+     window.laserpellet = function() {
+      var pellet = {};
+      pellet.$node = $('<span class="laserpellet"><span>');
+      pellet.top =  $('.laser').css('top');
+      pellet.left = $('.laser').css('left'); 
+        return pellet;
+     };
+
+      function firelaser(top,left){
+        var laserpellet = window.laserpellet();
+          //var top = $('.laser').css('top');
+         // var left = $('.laser').css('left');
+        laserpellet.$node.css({top:top+30,left:left+30});
+        laserpellets.push(laserpellet.$node);
+        var width = $('body').width();
+        
+        $('body').append(laserpellet.$node);
+
+      setInterval(function(){
+
+      laserpellets.forEach(function(pellet){
+        var oldLeft = pellet.css('left').replace('px',"");
+        //Define speed of lasers here
+        oldLeft = Number(oldLeft) + 10;
+        //console.log("left is" + oldLeft);
+        oldLeft +=5;
+        pellet.css({left:oldLeft});
+          //pellet.remove();
+          //$('body').append(pellet);
+      });
+      },100);
+       // setInterval(function)
+          //$('.laserpellet').animate({left:"+=" + 1200},3000)
+    
+      }
+      
+
+    //appends laser
+    var laser = $('<img src="images/laser.png" class="laser">');
+    laser.css({top:100,left:100,width:'50px',height:'100px'});
+    //console.log(laser);
+    $('body').append(laser);
+
+
+    function getdancerspositions(){
+      var positions = [];
+      dancers.forEach(function(dancer){
+        positions.push([dancer.$node.css('top'),dancer.$node.css('left')]);
+      });
+      console.log(positions);
+      return positions;
+    }
+
+    function collisiondetector(){
+     dancers.forEach(function(dancer){
+        var left= Number(dancer.$node.css('left').replace("px",""));
+        var top = Number(dancer.$node.css('top').replace("px",""));
+        laserpellets.forEach(function(pellet){
+          var pelletleft = Number(pellet.css('left').replace("px",""));
+          var pellettop = Number(pellet.css('top').replace("px",""));
+          //console.log("collision is" + Math.abs(left-pelletleft)<40 && Math.abs(top-pellettop<40)); 
+          if(Math.abs(left-pelletleft)<40 && Math.abs(top-pellettop<40)){
+            dancer.$node.remove();
+            dancer.$horseNode.remove();
+          }
+        })
+
+      })
+    }
+
+    setInterval(collisiondetector,10);
+
+
+
+
+    </script>
   </body>
 </html>

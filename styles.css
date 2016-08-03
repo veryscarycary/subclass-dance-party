@@ -43,6 +43,31 @@ body, a:link, a:visited, a:active{
   z-index: 3;
 }
 
+.laserpellet{
+  border:10px solid red;
+  background-color:red;
+  border-radius:10px;
+  width:15px;
+  height:15px;
+  position:absolute;
+  animation-duration: 2s;
+  animation-name: bounceIn;
+  z-index: 3;
+}
+
+
+
+.laser{
+
+    width:90px;
+  height:90px;
+  position:absolute;
+  animation-duration: 2s;
+  animation-name: bounceIn;
+  z-index: 3;
+
+}
+
 .horseNode {
   width:180px;
   height:180px;
@@ -51,6 +76,13 @@ body, a:link, a:visited, a:active{
   animation-name: bounceIn;
   z-index: 1;
 }
+
+.threednode{
+  position:absolute;
+  animation-duration: 2s;
+  animation-name: bounceIn;
+}
+
 /*@keyframes bounceIn {
   0% {
     transform: scale(0.1);
@@ -63,4 +95,9 @@ body, a:link, a:visited, a:active{
   100% {
     transform: scale(1);
   }
+<<<<<<< HEAD
 }*/
+
+.laser{
+  border:0px solid red;
+}
