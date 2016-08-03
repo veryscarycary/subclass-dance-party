@@ -4,7 +4,7 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
   this.top = top;
   this.left = left;
-  this.speed = (40 + (50 * Math.random())).toString();
+  this.speed = (150 + (50 * Math.random())).toString();
   this.setPosition(this.top, this.left);
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();

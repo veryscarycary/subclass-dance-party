@@ -42,6 +42,7 @@
      Project.left = 100;
 
      $(document).keypress(function(event){
+      var gunspeed = 75;
 
        if(event.which === 32){
 
@@ -50,12 +51,12 @@
        if(event.which === 122){
         
          Project.top += 5;
-         $('.laser').css({top: Project.top+45});
+         $('.laser').css({top: Project.top+gunspeed});
        }
 
        if (event.which === 97){
          Project.top -= 5;
-         $('.laser').css({top: Project.top-45});
+         $('.laser').css({top: Project.top-gunspeed});
        }
          // Project.left += 5;
         //  Project.top += 5;
@@ -64,7 +65,7 @@
 
      window.laserpellet = function() {
       var pellet = {};
-      pellet.$node = $('<img src="images/scandal.jpg" class="laserpellet">');
+      pellet.$node = $('<img src="images/scandal.png" class="laserpellet">');
       pellet.top =  $('.laser').css('top');
       pellet.left = $('.laser').css('left'); 
         return pellet;
@@ -111,12 +112,12 @@
       dancers.forEach(function(dancer){
         positions.push([dancer.$node.css('top'),dancer.$node.css('left')]);
       });
-      console.log(positions);
+      //console.log(positions);
       return positions;
     }
 
     function collisiondetector(){
-     dancers.forEach(function(dancer){
+     dancers.forEach(function(dancer,index){
         var left= Number(dancer.$node.css('left').replace("px",""));
         var top = Number(dancer.$node.css('top').replace("px",""));
         laserpellets.forEach(function(pellet){
@@ -125,15 +126,19 @@
           //console.log("collision is" + Math.abs(left-pelletleft)<40 && Math.abs(top-pellettop<40)); 
           if(Math.abs(left-pelletleft)<40 && Math.abs(top-pellettop<40)){
             //dancer.remove();
+            //dancers[index] = undefined;
+           // dancer.speed = dancer.speed + 20;
+            //console.log(dancer.speed) ;
+            //dancer.$node.animate({left: "+=" + 1000, '-webkit-transform': 'rotate(45deg)'}, 500);
             dancer.$node.remove();
             dancer.$horseNode.remove();
           }
-        })
+        });
 
-      })
+      });
     }
 
-    setInterval(collisiondetector,10);
+    setInterval(function(){collisiondetector(); }, 10);
 
 
 

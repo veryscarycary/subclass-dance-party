@@ -6,6 +6,7 @@ var makeBlinkyDancer = function(top, left, timeBetweenSteps) {
   this.timeBetweenSteps = timeBetweenSteps;
   this.$horseNode = $('<img class="dancer" src="images/horse.gif">');
   this.setPosition(top, left);
+  this.explosion = false;
   //var oldStep = blinkyDancer.step;
 };
 makeBlinkyDancer.prototype = Object.create(makeDancer.prototype);
@@ -14,7 +15,7 @@ makeBlinkyDancer.prototype.constructor = makeBlinkyDancer;
 makeBlinkyDancer.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
   //console.log(this);
-  console.log(window.motion);
+  //console.log(window.motion);
   if (window.motion === true) {
     setTimeout(this.step.bind(this), this.timeBetweenSteps);
   }
@@ -29,8 +30,28 @@ makeBlinkyDancer.prototype.step = function() {
   //this.$node.toggle();
   $('.dancer').animate({left: "+=" + this.speed, '-webkit-transform': 'rotate(45deg)'}, 2500);
 
-  if(Number(this.$node.css("left").replace('px',"")) >= $("body").width()){
+  if ( Number(this.$node.css("left").replace('px',"")) >= $("body").width() ) {
     //remove it
-    //show explosion
+
+    if (this.explosion === false) {
+      this.$node.remove();
+      this.$horseNode.remove();
+      //show explosion
+      window.explosion = $('<img class="explosion" src="images/explosion.gif">');
+      var rightmost = $('body').width() - 75;
+      window.explosion.css( {left: rightmost, top: 500} );
+      console.log("explosion is" + window.explosion);
+
+      $('body').append(window.explosion);
+
+      var removeexplosion = function(){
+        $('.explosion').remove();
+        delete window.explosion;
+      };
+      //window.explosion.remove();
+      setTimeout(removeexplosion, 2000);
+      this.explosion = true;
+      //$('body').append($('<img class="dancer" src="images/explosion.gif">').css( {left: $("body").width()} ));
+    }
   }
-};  
+};
