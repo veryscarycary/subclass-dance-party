@@ -67,6 +67,23 @@ body, a:link, a:visited, a:active{
 
 }
 
+.scoreboard{
+  position: absolute;
+  background-color:beige;
+  left:812px;
+  top:100px;
+  border:5px solid brown;
+  color:red;
+}
+
+h2{
+  color:red;
+}
+
+.score{
+  text-align: center;
+}
+
 .horseNode {
   width:180px;
   height:180px;

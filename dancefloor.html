@@ -32,6 +32,13 @@
     <script src="src/init.js"></script>
      <script>
 
+     //attaches scoreboard
+     window.score = 0;
+     window.scoreboard = $('<div class = "scoreboard"><h2>Score</h2><p class= "score">'+ window.score +'</p></div>');
+     //document.getElementsByClassName('score')[0].innerHTML = 1;
+     //console.log(window.scoreboard);
+     $('body').append(window.scoreboard);
+
      window.motion = true;
      var Project;
      window.laserpellets = [];
@@ -132,7 +139,9 @@
             //dancer.$node.animate({left: "+=" + 1000, '-webkit-transform': 'rotate(45deg)'}, 500);
             dancer.$node.remove();
             dancer.$horseNode.remove();
-            pellet.$node.remove();
+            //pellet.$node.remove();
+            window.score += 10;
+            $('.score')[0].innerHTML = window.score;
           }
         });
 
