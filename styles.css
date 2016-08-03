@@ -44,11 +44,11 @@ body, a:link, a:visited, a:active{
 }
 
 .laserpellet{
-  border:10px solid red;
+
   background-color:red;
   border-radius:10px;
-  width:15px;
-  height:15px;
+  width:40px;
+  height:40px;
   position:absolute;
   animation-duration: 2s;
   animation-name: bounceIn;

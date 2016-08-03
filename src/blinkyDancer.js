@@ -28,4 +28,9 @@ makeBlinkyDancer.prototype.step = function() {
   //this.setPosition(this.top, this.left);
   //this.$node.toggle();
   $('.dancer').animate({left: "+=" + this.speed, '-webkit-transform': 'rotate(45deg)'}, 2500);
+
+  if(Number(this.$node.css("left").replace('px',"")) >= $("body").width()){
+    //remove it
+    //show explosion
+  }
 };  
