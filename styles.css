@@ -100,3 +100,7 @@ body, a:link, a:visited, a:active{
 .laser{
   border:0px solid red;
 }
+
+.explosion{
+  position:absolute;
+}

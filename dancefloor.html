@@ -38,7 +38,7 @@
 
    
      Project = {};
-     Project.top = 100;
+     Project.top = 400;
      Project.left = 100;
 
      $(document).keypress(function(event){
@@ -102,7 +102,7 @@
 
     //appends laser
     var laser = $('<img src="images/laser.png" class="laser">');
-    laser.css({top:100,left:25,width:'50px',height:'100px'});
+    laser.css({top:500,left:25,width:'50px',height:'100px'});
     //console.log(laser);
     $('body').append(laser);
 
@@ -132,6 +132,7 @@
             //dancer.$node.animate({left: "+=" + 1000, '-webkit-transform': 'rotate(45deg)'}, 500);
             dancer.$node.remove();
             dancer.$horseNode.remove();
+            pellet.$node.remove();
           }
         });
 
