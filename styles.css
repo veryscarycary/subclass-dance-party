@@ -103,4 +103,12 @@ body, a:link, a:visited, a:active{
 
 .explosion{
   position:absolute;
+  z-index: 2;
+}
+
+.confetti {
+  position:absolute;
+  z-index: 4;
+  min-height: 1024px;
+  min-width: 1024px;
 }

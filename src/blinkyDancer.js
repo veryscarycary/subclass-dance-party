@@ -37,12 +37,14 @@ makeBlinkyDancer.prototype.step = function() {
       this.$node.remove();
       this.$horseNode.remove();
       //show explosion
+      window.confetti = $('<img class="confetti" src="images/confetti.gif">');
       window.explosion = $('<img class="explosion" src="images/explosion.gif">');
       var rightmost = $('body').width() - 120;
       window.explosion.css( {left: rightmost, top: 550} );
       console.log("explosion is" + window.explosion);
       console.log('explosion.css is' + window.explosion.css('left'));
       $('body').append(window.explosion);
+      $('body').append(window.confetti);
 
       var removeexplosion = function(){
         $('.explosion').remove();
