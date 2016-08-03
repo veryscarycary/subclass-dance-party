@@ -12,6 +12,10 @@
     <script src="src/BernieClass.js"></script>
     <script src="src/ObamaClass.js"></script>
     <script src="src/TedClass.js"></script>
+    <audio>
+      <source src="audio/Yay.mp3"></source>
+      <source src="audio/Yay.ogg"></source>
+    </audio>
   </head>
   <body>
     <div class="topbar">
@@ -32,6 +36,7 @@
     <script src="src/init.js"></script>
      <script>
 
+     window.audio = $('audio')[0];
      //attaches scoreboard
      window.score = 0;
      window.scoreboard = $('<div class = "scoreboard"><h2>Score</h2><p class= "score">'+ window.score +'</p></div>');
@@ -82,7 +87,7 @@
         var laserpellet = window.laserpellet();
           //var top = $('.laser').css('top');
          // var left = $('.laser').css('left');
-        laserpellet.$node.css({top:top+30,left:left+30});
+        laserpellet.$node.css({top: top+100, left:left+30});
         laserpellets.push(laserpellet.$node);
         var width = $('body').width();
         

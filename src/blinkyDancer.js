@@ -45,6 +45,7 @@ makeBlinkyDancer.prototype.step = function() {
       console.log('explosion.css is' + window.explosion.css('left'));
       $('body').append(window.explosion);
       $('body').append(window.confetti);
+      window.audio.play();
 
       var removeexplosion = function(){
         $('.explosion').remove();
